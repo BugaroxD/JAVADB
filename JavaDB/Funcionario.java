@@ -1,3 +1,4 @@
+import java.sql.Connection;
 import java.sql.Date;
 
 public class Funcionario {
@@ -65,6 +66,10 @@ public class Funcionario {
             ", dataNascimento='" + getDataNascimento() + "'" +
             ", matricula='" + getMatricula() + "'" +
             "}";
+    }
+
+    public static Connection createConnectionToMySQL() {
+        return null;
     }
 
 }
