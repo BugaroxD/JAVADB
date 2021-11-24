@@ -1,5 +1,5 @@
 import java.sql.Connection;
-import java.util.Date;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,12 +14,6 @@ public class Home {
     public static void main(String[] args) throws ParseException {
 
         int opcao;
-        int id;
-        String nome;
-        String cpf;
-        String dataNascimento;
-        String matricula;
-
 
         try{
             final String url = "jdbc:mysql://localhost:3306/POO?useTimezone=true&serverTimezone=UTC";
@@ -49,22 +43,26 @@ public class Home {
                 dataNascimento = scanner.next(),
                 matricula = scanner.next());*/
 
+
+
                 System.out.println("Nome: ");
-                nome = sc.nextLine();
+                String nome = sc.next();
                 System.out.println("Cpf: ");
-                cpf = sc.nextLine();
-                System.out.println("Data de nascimento: *dd/mm/aaaa* ");
-                dataNascimento = sc.nextLine();
+                String cpf = sc.next();
+                System.out.println("Data de nascimento: *aaaa/mm/dd* ");
+                String dataNascimento = sc.next();
                 System.out.println("Matricula do funcionário:");
-                matricula = sc.nextLine();
+                String matricula = sc.next();
                 
-                SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
-                Date date = f.parse(dataNascimento);
+                //SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+                Date date = Date.valueOf(dataNascimento);
                 System.out.println("Enter cliente data: ");
-                Funcionario funcionario = new Funcionario(nome, cpf, (java.sql.Date) date, matricula);
+                Funcionario funcionario = new Funcionario(nome, cpf, date, matricula);
             
-                sc.close();
-            statement.execute ("INSERT funcionario (nome, cpf, data_nascimento, matricula) VALUES ('" + funcionario.getNome() + "','" + funcionario.getCpf() + "','" + funcionario.getDataNascimento() + "','" + funcionario.getMatricula() + "')");
+                
+            statement.execute ("INSERT funcionario (nome, cpf, data_nascimento, matricula) "+ 
+            "VALUES ('" + funcionario.getNome() + "','" + funcionario.getCpf() + "','" + funcionario.getDataNascimento() + "','" + funcionario.getMatricula() + "')");
+            sc.close();
             break;
 
            /* case 2:
