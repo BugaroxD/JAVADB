@@ -17,6 +17,13 @@ public class Funcionario {
         this.matricula = matricula;
     }
 
+    public Funcionario(String nome, String cpf, Date date, String matricula) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.dataNascimento = date;
+        this.matricula = matricula;
+    }
+
     public int getId() {
         return this.id;
     }
